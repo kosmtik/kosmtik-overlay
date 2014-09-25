@@ -12,10 +12,10 @@ L.K.Map.addInitHook(function () {
         title.innerHTML = 'Add an overlay';
         this.kosmtikOverlay = L.tileLayer(params.url, params);
         var builder = new L.K.FormBuilder(params, [
-            ['active', {handler: 'CheckBox', helpText: 'Active'}],
+            ['active', {handler: L.K.Switch, label: 'Active'}],
+            ['tms', {handler: L.K.Switch, label: 'TMS format.'}],
             ['url', {helpText: 'URL template.'}],
             ['opacity', {handler: 'FloatInput', helpText: 'Opacity: from 0 to 1 (opaque).'}],
-            ['tms', {handler: 'CheckBox', helpText: 'TMS format.'}]
         ]);
         builder.on('synced', function (e) {
             if (e.field === 'active') {
