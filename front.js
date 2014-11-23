@@ -46,21 +46,30 @@ L.K.Map.addInitHook(function () {
         container.appendChild(builder.build());
         this.sidebar.addTab({
             label: 'Overlay',
-            content: container
+            content: container,
+            className: 'overlay'
         });
         this.sidebar.rebuild();
-        var shortcutCallback = function () {
+        var toggleCallback = function () {
             params.active = !params.active;
             L.bind(toggle, this)();
             builder.fetchAll();
         };
-        this.shortcuts.add({
+        var editCallback = function () {
+            this.sidebar.open('.overlay');
+        };
+        this.commands.add({
             keyCode: L.K.Keys.O,
             ctrlKey: true,
             altKey: true,
-            callback: shortcutCallback,
+            callback: toggleCallback,
             context: this,
-            description: 'Toggle overlay'
+            name: 'Overlay: toggle'
+        });
+        this.commands.add({
+            callback: editCallback,
+            context: this,
+            name: 'Overlay: configure'
         });
     });
 });
