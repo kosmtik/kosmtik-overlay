@@ -4,7 +4,7 @@ L.K.Map.addInitHook(function () {
             title = L.DomUtil.create('h3', '', container),
             params = {
                 tms: false,
-                url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                url: L.K.Config.project.overlayUrl,
                 active: false,
                 opacity: 0.5,
                 position: 1
@@ -21,7 +21,7 @@ L.K.Map.addInitHook(function () {
             ['tms', {handler: L.K.Switch, label: 'TMS format.'}],
             ['url', {helpText: 'URL template.'}],
             ['opacity', {handler: 'FloatInput', helpText: 'Opacity: from 0 to 1 (opaque).'}],
-            ['position', {handler: 'IntSelect', helpText: 'Position regarding to project\'s map.', selectOptions: [[1, 'Above'], [-1, 'Below']]}],
+            ['position', {handler: 'IntSelect', helpText: 'Position regarding to project\'s map.', selectOptions: [[1, 'Above'], [-1, 'Below']]}]
         ]);
         var toggle = function () {
             if (params.active) {
