@@ -1,5 +1,7 @@
 var patchConfig = function (e) {
-    e.options.overlayUrl = e.project.mml.overlayUrl || this.userConfig.overlayUrl || 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+    e.options.overlay = e.project.mml.overlay || this.userConfig.overlay || {};
+    // Retrocompat
+    if (e.project.mml.overlayUrl) e.options.overlay.url = e.project.mml.overlayUrl;
 };
 
 exports.Plugin = function (config) {

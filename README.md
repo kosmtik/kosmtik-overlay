@@ -10,8 +10,17 @@ In Kosmtik root folder, type:
 
 ## Config
 
-You can add `overlayUrl` key to your `project.mml` or your kosmtik `config.yml`
-files to set the default URL used. Fallback to OSM default style.
+You can add an `overlay` key to your `project.mml` or your kosmtik `config.yml`
+files to override the behaviour. For example:
+
+```yml
+overlay:
+    url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+    active: true
+    opacity: 1
+    position: -1
+
+```
 
 ## Issues and feature requests
 

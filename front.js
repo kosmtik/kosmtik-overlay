@@ -2,13 +2,13 @@ L.K.Map.addInitHook(function () {
     this.whenReady(function () {
         var container = L.DomUtil.create('div', 'overlay-container'),
             title = L.DomUtil.create('h3', '', container),
-            params = {
+            params = L.extend({
                 tms: false,
-                url: L.K.Config.project.overlayUrl,
+                url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
                 active: false,
                 opacity: 0.5,
                 position: 1
-            },
+            }, L.K.Config.project.overlay),
             self = this,
             updatePosition = function () {
                 if (params.position === 1) self.kosmtikOverlay.bringToFront();
@@ -34,7 +34,7 @@ L.K.Map.addInitHook(function () {
         };
         builder.on('synced', function (e) {
             if (e.field === 'active') {
-                L.bind(toggle, this)();
+                toggle.call(this);
             } else if (e.field === 'url') {
                 this.kosmtikOverlay.setUrl(params.url);
             } else if (e.field === 'opacity') {
@@ -52,7 +52,7 @@ L.K.Map.addInitHook(function () {
         this.sidebar.rebuild();
         var toggleCallback = function () {
             params.active = !params.active;
-            L.bind(toggle, this)();
+            toggle.call(this);
             builder.fetchAll();
         };
         var editCallback = function () {
@@ -71,5 +71,6 @@ L.K.Map.addInitHook(function () {
             context: this,
             name: 'Overlay: configure'
         });
+        if (params.active) toggle.call(this);
     });
 });
