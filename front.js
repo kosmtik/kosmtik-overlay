@@ -32,14 +32,14 @@ L.K.Map.addInitHook(function () {
                 this.removeLayer(this.kosmtikOverlay);
             }
         };
-        builder.on('synced', function (e) {
-            if (e.field === 'active') {
+        builder.on('postsync', function (e) {
+            if (e.helper.field === 'active') {
                 toggle.call(this);
-            } else if (e.field === 'url') {
+            } else if (e.helper.field === 'url') {
                 this.kosmtikOverlay.setUrl(params.url);
-            } else if (e.field === 'opacity') {
+            } else if (e.helper.field === 'opacity') {
                 this.kosmtikOverlay.setOpacity(params.opacity);
-            } else if (e.field === 'position') {
+            } else if (e.helper.field === 'position') {
                 updatePosition();
             }
         }, this);
