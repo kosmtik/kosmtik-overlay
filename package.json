@@ -1,6 +1,6 @@
 {
   "name": "kosmtik-overlay",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Add an overlay to Kosmtik",
   "main": "index.js",
   "scripts": {
