@@ -20,7 +20,7 @@ L.K.Map.addInitHook(function () {
             ['active', {handler: L.K.Switch, label: 'Active (alt+ctrl+O)'}],
             ['tms', {handler: L.K.Switch, label: 'TMS format.'}],
             ['url', {helpText: 'URL template.'}],
-            ['opacity', {handler: 'FloatInput', helpText: 'Opacity: from 0 to 1 (opaque).'}],
+            ['opacity', {handler: 'FloatInput', helpText: 'Opacity: from 0 to 1 (opaque).', min: 0, max: 1, step: 0.1}],
             ['position', {handler: 'IntSelect', helpText: 'Position regarding to project\'s map.', selectOptions: [[1, 'Above'], [-1, 'Below']]}]
         ]);
         var toggle = function () {
