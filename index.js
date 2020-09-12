@@ -11,4 +11,4 @@ class Overlay {
     };
 }
 
-exports = { Plugin: Overlay }
+exports = module.exports = { Plugin: Overlay }
